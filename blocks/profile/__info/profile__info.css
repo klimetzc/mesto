@@ -1,3 +1,9 @@
 .profile__info {
   display: flex;
 }
+
+@media screen and (max-width: 700px) {
+  .profile__info {
+    justify-self: center;
+  }
+}

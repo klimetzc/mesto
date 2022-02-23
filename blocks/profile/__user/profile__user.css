@@ -3,3 +3,12 @@
   grid-template-columns: 120px 1fr;
   gap: 30px;
 }
+
+@media screen and (max-width: 700px) {
+  .profile__user {
+    grid-template-columns: 1fr;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}

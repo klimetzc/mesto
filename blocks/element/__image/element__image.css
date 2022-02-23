@@ -1,0 +1,5 @@
+.element__image {
+  width: 100%;
+  transition: .3s;
+  transform-origin: bottom;
+}
