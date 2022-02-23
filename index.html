@@ -5,77 +5,78 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--  <base href="/">-->
   <link rel="stylesheet" href="pages/index.css">
-  <!--  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
-  <title>Document</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <title>Mesto</title>
 </head>
 
 <body class="page">
-  <header class="header">
-    <img src="/images/logo_light.svg" alt="Место - Россия" class="header__logo">
-  </header>
+<header class="header">
+  <a href="https://github.com/klimetzc/mesto" target="_blank">
+    <img src="images/logo_light.svg" alt="Место - Россия" class="header__logo">
+  </a>
+</header>
 
-  <section class="profile">
-    <div class="profile__user">
-      <img src="/images/avatar.jpg" alt="Аватар пользователя (динамический)" class="profile__avatar">
-      <div class="profile__info">
-        <div class="profile__names">
-          <p class="profile__username">Жак-Ив Кусто</p>
-          <p class="profile__profession">Исследователь океана</p>
-        </div>
-        <button class="profile__edit-button">
-          <svg class="icon">
-            <rect x="0.5" y="0.5" width="23" height="23" stroke="currentColor" />
-            <path
-              d="M17 8.32827L9.60377 15.7666L8.28302 14.4194L15.6604 7L17 8.32827ZM7 17L8.96226 16.4118L7.58491 15.0835L7 17Z"
-              fill="currentColor" />
-          </svg>
-        </button>
+<section class="profile">
+  <div class="profile__user">
+    <img src="images/avatar.jpg" alt="Аватар пользователя (динамический)" class="profile__avatar">
+    <div class="profile__info">
+      <div class="profile__names">
+        <p class="profile__username">Жак-Ив Кусто</p>
+        <p class="profile__profession">Исследователь океана</p>
       </div>
+      <button class="profile__edit-button">
+        <svg class="icon">
+          <rect x="0.5" y="0.5" width="23" height="23" stroke="currentColor"/>
+          <path
+                  d="M17 8.32827L9.60377 15.7666L8.28302 14.4194L15.6604 7L17 8.32827ZM7 17L8.96226 16.4118L7.58491 15.0835L7 17Z"
+                  fill="currentColor"/>
+        </svg>
+      </button>
     </div>
+  </div>
 
-    <button class="profile__add-button">
-      <!-- redeploy -->
-    </button>
-  </section>
+  <button class="profile__add-button">
+    <!-- redeploy -->
+  </button>
+</section>
 
-  <section class="elements">
-    <article class="element">
-      <img src="images/Karachevsk.png" alt="Старый храм" class="element__image">
-      <h2 class="element__title">Карачаевск</h2>
-      <button class="element__like"></button>
-    </article>
-    <article class="element">
-      <img src="images/Elbrus.png" alt="Равнины" class="element__image">
-      <h2 class="element__title">Гора Эльбрус</h2>
-      <button class="element__like"></button>
-    </article>
-    <article class="element">
-      <img src="images/Dombai.png" alt="Снежная гора" class="element__image">
-      <h2 class="element__title">Домбаи</h2>
-      <button class="element__like"></button>
-    </article>
-    <article class="element">
-      <img src="images/Elbrus.png" alt="Снежная гора" class="element__image">
-      <h2 class="element__title">Гора Эльбрус</h2>
-      <button class="element__like"></button>
-    </article>
-    <article class="element">
-      <img src="images/Dombai.png" alt="Равнины" class="element__image">
-      <h2 class="element__title">Домбаи</h2>
-      <button class="element__like"></button>
-    </article>
-    <article class="element">
-      <img src="images/Karachevsk.png" alt="Старый храм" class="element__image">
-      <h2 class="element__title">Карачаево-Черкессия</h2>
-      <button class="element__like"></button>
-    </article>
-  </section>
+<section class="elements">
+  <article class="element">
+    <img src="images/Karachevsk.png" alt="Старый храм" class="element__image">
+    <h2 class="element__title">Карачаевск</h2>
+    <button class="element__like"></button>
+  </article>
+  <article class="element">
+    <img src="images/Elbrus.png" alt="Равнины" class="element__image">
+    <h2 class="element__title">Гора Эльбрус</h2>
+    <button class="element__like"></button>
+  </article>
+  <article class="element">
+    <img src="images/Dombai.png" alt="Снежная гора" class="element__image">
+    <h2 class="element__title">Домбаи</h2>
+    <button class="element__like"></button>
+  </article>
+  <article class="element">
+    <img src="images/Elbrus.png" alt="Снежная гора" class="element__image">
+    <h2 class="element__title">Гора Эльбрус</h2>
+    <button class="element__like"></button>
+  </article>
+  <article class="element">
+    <img src="images/Dombai.png" alt="Равнины" class="element__image">
+    <h2 class="element__title">Домбаи</h2>
+    <button class="element__like"></button>
+  </article>
+  <article class="element">
+    <img src="images/Karachevsk.png" alt="Старый храм" class="element__image">
+    <h2 class="element__title">Карачаево-Черкессия</h2>
+    <button class="element__like"></button>
+  </article>
+</section>
 
-  <footer class="footer">
-    <p>&copy; 2022 Mesto Russia</p>
-  </footer>
+<footer class="footer">
+  <p>&copy; 2022 Mesto Russia</p>
+</footer>
 
 </body>
 
