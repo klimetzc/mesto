@@ -1,0 +1,18 @@
+/* normalize */
+/* font */
+@import url(/blocks/root/roots.css);
+@import url(/blocks/page/page.css);
+
+@import url(/blocks/header/header.css);
+@import url(/blocks/header/__logo/header__logo.css);
+
+@import url(/blocks/profile/profile.css);
+@import url(/blocks/profile/__avatar/profile__avatar.css);
+@import url(/blocks/profile/__add-button/profile__add-button.css);
+@import url(/blocks/profile/__edit-button/profile__edit-button.css);
+@import url(/blocks/profile/__info/profile__info.css);
+@import url(/blocks/profile/__names/profile__names.css);
+@import url(/blocks/profile/__profession/profile__profession.css);
+@import url(/blocks/profile/__username/profile__username.css);
+@import url(/blocks/profile/__user/profile__user.css);
+@import url(/blocks/icon/icon.css);

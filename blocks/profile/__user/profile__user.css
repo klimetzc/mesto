@@ -1,0 +1,5 @@
+.profile__user {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 30px;
+}
