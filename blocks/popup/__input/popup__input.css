@@ -1,0 +1,23 @@
+.popup__input {
+  position: relative;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+  margin-bottom: 30px;
+  padding: 0 0 13px 0;
+}
+
+.popup__input:not(:placeholder-shown) {
+  border-color: red;
+}
+
+.popup__input:valid {
+  border-color: green;
+}
+
+.popup__input:invalid {
+  background-image: url("../../../images/round-error-symbol_icon-icons.com_72585.svg");
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: right 6.5px top 6.5px;
+}

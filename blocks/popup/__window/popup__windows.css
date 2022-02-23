@@ -1,0 +1,13 @@
+.popup__window {
+  color: var(--black);
+  z-index: 11;
+  position: relative;
+  width: 430px;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: var(--white);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
