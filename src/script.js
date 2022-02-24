@@ -9,7 +9,7 @@ let profession = document.querySelector(".profile__profession");
 let popupName = document.querySelector(".popup__name");
 let popupProfession = document.querySelector(".popup__profession");
 let likeButtons = document.querySelectorAll(".element__like");
-
+let popupWindow = document.querySelector(".popup__window");
 
 popupName.value = username.textContent;
 popupProfession.value = profession.textContent;
@@ -31,6 +31,17 @@ function openPopup() {
     popup.style.display = 'flex';
     popup.classList.toggle("fadeEffect");
     page.style.overflow = "hidden";
+    let popupWindowHeight = popupWindow.clientHeight;
+    let pageHeight = document.documentElement.clientHeight;
+    let percentHeight = (popupWindowHeight / pageHeight * 100);
+    console.log(percentHeight);
+    console.log(parseInt(getComputedStyle(popupWindow).height));
+    console.log(popupWindow.clientHeight, document.documentElement.clientHeight);
+    if (percentHeight >= 80) {
+      console.log('yes');
+      popup.style.overflow = "scroll";
+      // page.style.overflow = "auto";
+    }
     setTimeout(() => {
       popup.style.display = 'flex';
     }, popupTransitionDuration)

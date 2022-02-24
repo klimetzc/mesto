@@ -1,5 +1,7 @@
 .popup__window {
   color: var(--black);
+  /*height: 2000px;*/
+  margin: 50px;
   z-index: 11;
   position: relative;
   width: 430px;
@@ -10,4 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  /*overflow: hidden;*/
+  /*overflow-Y: auto;*/
 }
