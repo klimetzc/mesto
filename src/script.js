@@ -10,6 +10,8 @@ let popupName = document.querySelector(".popup__name");
 let popupProfession = document.querySelector(".popup__profession");
 let likeButtons = document.querySelectorAll(".element__like");
 let popupWindow = document.querySelector(".popup__window");
+let popupOverlay = document.querySelector(".popup__overlay");
+let inputButtons = document.querySelectorAll(".popup__input");
 
 popupName.value = username.textContent;
 popupProfession.value = profession.textContent;
@@ -31,14 +33,16 @@ function openPopup() {
     popup.style.display = 'flex';
     popup.classList.toggle("fadeEffect");
     page.style.overflow = "hidden";
-    let popupWindowHeight = popupWindow.clientHeight;
+    let popupWindowHeight = popupWindow.offsetHeight;
     let pageHeight = document.documentElement.clientHeight;
     let percentHeight = (popupWindowHeight / pageHeight * 100);
     console.log(percentHeight);
     console.log(parseInt(getComputedStyle(popupWindow).height));
-    console.log(popupWindow.clientHeight, document.documentElement.clientHeight);
-    if (percentHeight >= 80) {
+    console.log(popupWindow.offsetHeight, document.documentElement.clientHeight);
+    if (percentHeight >= 100) {
       console.log('yes');
+      // popupOverlay.style.minHeight = `${popupWindowHeight + 500}px`;
+      popupOverlay.style.overflow = "auto";
       popup.style.overflow = "scroll";
       // page.style.overflow = "auto";
     }
@@ -75,6 +79,16 @@ likeButtons.forEach((item) => {
               fill="currentColor"/>
       </svg>`;
       item.classList.remove(".element_like_active");
+    }
+  })
+})
+inputButtons.forEach((item) => {
+  item.addEventListener('input', () => {
+    console.log(document.querySelectorAll(".popup__input:invalid").length)
+    if (document.querySelectorAll(".popup__input:invalid").length > 0) {
+      submitButton.disabled = true;
+    } else if (document.querySelectorAll(".popup__input:invalid").length == 0) {
+      submitButton.disabled = false;
     }
   })
 })
