@@ -2,4 +2,7 @@
   width: 100%;
   transition: .3s;
   transform-origin: bottom;
+  height: 282px;
+  object-fit: cover;
+  object-position: bottom;
 }

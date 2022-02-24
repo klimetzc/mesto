@@ -18,3 +18,9 @@
 .profile__edit-button:hover {
   color: var(--hover-icon);
 }
+
+@media screen and (max-width: 550px) {
+  .profile__edit-button {
+    margin-top: 5px;
+  }
+}

@@ -1,5 +1,5 @@
-/* normalize */
-/* font */
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/Inter/inter.css);
 /**/
 @import url(../blocks/root/root.css);
 @import url(../blocks/page/page.css);
@@ -27,6 +27,9 @@
 @import url(../blocks/element/__like/_active/element__like_active.css);
 @import url(../blocks/element/__title/element__title.css);
 
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__content/footer__content.css);
+
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__close-button/popup__close__button.css);
 @import url(../blocks/popup/__name/popup__name.css);
@@ -35,3 +38,4 @@
 @import url(../blocks/popup/__submit/popup__submit.css);
 @import url(../blocks/popup/__window/popup__windows.css);
 @import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__title/popup__title.css);

@@ -3,10 +3,20 @@
   width: 100%;
   background-color: var(--black);
   padding: 18px;
+  margin-top: 12px;
   border: none;
   border-radius: 2px;
   transition: .3s;
   cursor: pointer;
+}
+
+.popup__submit:disabled {
+  background-color: gray;
+}
+
+.popup__submit:disabled:hover {
+  background-color: gray;
+  cursor: default;
 }
 
 .popup__submit:hover {

@@ -9,10 +9,18 @@
   cursor: pointer;
   border: none;
   background-color: transparent;
+
   color: var(--white);
   transition: .3s;
 }
 
 .popup__close-button:hover {
   color: var(--hover-icon);
+}
+
+@media screen and (max-width: 550px) {
+  .popup__close-button {
+    right: 0;
+    top: -56px;
+  }
 }
