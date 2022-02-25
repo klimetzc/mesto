@@ -8,12 +8,14 @@
   color: white;
   background-color: transparent;
   cursor: pointer;
+  background-image: url("../../../images/buttons/edit/editButton.svg");
 
   transition: all .3s;
 }
 
 .profile__edit-button:hover {
   color: var(--hover-icon);
+  background-image: url("../../../images/buttons/edit/editButtonHovered.svg");
 }
 
 @media screen and (max-width: 550px) {

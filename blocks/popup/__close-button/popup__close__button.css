@@ -12,12 +12,14 @@
   cursor: pointer;
   border: none;
   background-color: transparent;
+  background-image: url("../../../images/buttons/popupClose/popupClose.svg");
   color: var(--white);
 
   transition: .3s;
 }
 
 .popup__close-button:hover {
+  background-image: url("../../../images/buttons/popupClose/popupCloseHovered.svg");
   color: var(--hover-icon);
 }
 

@@ -6,6 +6,7 @@
 
   border: 0;
   background-color: transparent;
+  background-image: url("../../../images/buttons/like/like.svg");
   cursor: pointer;
 
   transition: all .3s;
@@ -15,4 +16,5 @@
 .element__like:hover {
   color: var(--hover-icon);
   fill: var(--hover-icon);
+  background-image: url("../../../images/buttons/like/likeHovered.svg");
 }
