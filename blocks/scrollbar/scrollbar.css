@@ -4,7 +4,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--white);
+  background: var(--hover-button);
   border: 0 none #ffffff;
   border-radius: 50px;
 }
@@ -18,17 +18,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--black);
+  background: transparent;
   border: 0 none #ffffff;
   border-radius: 0;
 }
 
 ::-webkit-scrollbar-track:hover {
-  background: var(--black);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-track:active {
-  background: var(--black);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-corner {

@@ -1,17 +1,18 @@
 .element {
-  background-color: var(--white);
-  color: var(--black);
-  justify-self: center;
-  width: 100%;
-
-  overflow: hidden;
-  border-radius: 10px;
-
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  justify-self: center;
 
+  width: 100%;
+
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 10px;
+
+  overflow: hidden;
   align-items: center;
+
 }
 
 .element:hover > .element__image {

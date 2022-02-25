@@ -3,7 +3,7 @@
 /**/
 @import url(../blocks/root/root.css);
 @import url(../blocks/page/page.css);
-@import url(../blocks/fadeEffect/fadeEffect.css);
+@import url(../blocks/popup/_closed/popup_closed.css);
 @import url(../blocks/scrollbar/scrollbar.css);
 
 @import url(../blocks/header/header.css);
@@ -39,3 +39,5 @@
 @import url(../blocks/popup/__window/popup__windows.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/_closed/popup_closed.css);

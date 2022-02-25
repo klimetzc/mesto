@@ -1,25 +1,26 @@
 .popup__window {
-  color: var(--black);
+  display: flex;
   flex-direction: column;
   align-items: center;
-  /*height: 2000px;*/
-  margin: 50px auto 50px;
-  z-index: 11;
-  position: relative;
+
   width: 430px;
+  margin: 50px auto 50px;
+  max-height: 80%;
   padding: 36px;
   box-sizing: border-box;
+
+  z-index: 11;
+  position: relative;
+
   background-color: var(--white);
   border-radius: 10px;
-  display: flex;
-
-  /*overflow: hidden;*/
-  /*overflow-Y: auto;*/
+  color: var(--black);
 }
 
 @media screen and (max-width: 550px) {
   .popup__window {
     width: 100%;
     margin: 0;
+    padding: 25px 20px;
   }
 }

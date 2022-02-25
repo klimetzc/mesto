@@ -1,13 +1,15 @@
 .popup__submit {
-  color: var(--white);
   width: 100%;
-  background-color: var(--black);
   padding: 18px;
   margin-top: 12px;
+
+  color: var(--white);
+  background-color: var(--black);
+  cursor: pointer;
+
   border: none;
   border-radius: 2px;
   transition: .3s;
-  cursor: pointer;
 }
 
 .popup__submit:disabled {

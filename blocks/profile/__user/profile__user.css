@@ -6,8 +6,9 @@
 
 @media screen and (max-width: 550px) {
   .profile__user {
-    grid-template-columns: 1fr;
     width: 100%;
+
+    grid-template-columns: 1fr;
     justify-content: center;
     align-items: center;
   }
