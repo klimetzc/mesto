@@ -1,7 +1,7 @@
 .popup__submit {
   width: 100%;
-  padding: 18px;
-  margin-top: 12px;
+  padding: 14px 18px 14px 18px;
+  margin-top: 16px;
 
   color: var(--white);
   background-color: var(--black);
@@ -10,6 +10,11 @@
   border: none;
   border-radius: 2px;
   transition: .3s;
+
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
 }
 
 .popup__submit:disabled {
@@ -23,4 +28,11 @@
 
 .popup__submit:hover {
   background-color: var(--hover-button);
+}
+
+@media screen and (max-width: 550px) {
+  .popup__submit {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }

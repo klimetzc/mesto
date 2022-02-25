@@ -1,6 +1,7 @@
 .profile__user {
   display: grid;
   grid-template-columns: 120px 1fr;
+  align-items: center;
   gap: 30px;
 }
 
@@ -11,5 +12,6 @@
     grid-template-columns: 1fr;
     justify-content: center;
     align-items: center;
+    gap: 26px;
   }
 }

@@ -7,3 +7,10 @@
   row-gap: 20px;
   column-gap: 17px;
 }
+
+@media screen and (max-width: 550px) {
+  .elements {
+    box-sizing: border-box;
+    padding: 0 19px 0 19px;
+  }
+}

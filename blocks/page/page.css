@@ -11,3 +11,9 @@
   color: var(--white);
   font-family: Inter, Roboto, sans-serif;
 }
+
+@media screen and (max-width: 550px) {
+  .page {
+    padding: 0;
+  }
+}
