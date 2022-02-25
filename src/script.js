@@ -1,19 +1,19 @@
-let page = document.querySelector(".page");
+const page = document.querySelector(".page");
 
-let popup = document.querySelector(".popup");
-let popupCloseButton = document.querySelector(".popup__close-button");
-let popupName = document.querySelector(".popup__name");
-let popupProfession = document.querySelector(".popup__profession");
-let popupWindow = document.querySelector(".popup__window");
-let popupTransitionDuration = +parseFloat(getComputedStyle(popup).transitionDuration) * 1000;
-let inputButtons = document.querySelectorAll(".popup__input");
-let popupForm = document.querySelector(".popup__form");
+const popup = document.querySelector(".popup");
+const popupCloseButton = document.querySelector(".popup__close-button");
+let popupName = document.querySelector(".popup__input_type_name");
+let popupProfession = document.querySelector(".popup__input_type_profession");
+const popupWindow = document.querySelector(".popup__window");
+const popupTransitionDuration = +parseFloat(getComputedStyle(popup).transitionDuration) * 1000;
+const inputButtons = document.querySelectorAll(".popup__input");
+const popupForm = document.querySelector(".popup__form");
 
-let editButton = document.querySelector(".profile__edit-button");
-let submitButton = document.querySelector(".popup__submit");
+const editButton = document.querySelector(".profile__edit-button");
+const submitButton = document.querySelector(".popup__submit");
 let username = document.querySelector(".profile__username");
 let profession = document.querySelector(".profile__profession");
-let likeButtons = document.querySelectorAll(".element__like");
+const likeButtons = document.querySelectorAll(".element__like");
 
 
 popupName.value = username.textContent;
@@ -33,12 +33,13 @@ function openPopup() {
   popup.style.display = "flex";
   setTimeout(() => {
     popup.classList.toggle("popup_closed");
-    page.style.overflow = "hidden";
+
     let popupWindowHeight = popupWindow.offsetHeight;
     let pageHeight = document.documentElement.clientHeight;
     let percentHeight = (popupWindowHeight / pageHeight * 100);
 
     if (percentHeight >= 100) {
+      page.style.overflow = "hidden";
       popupForm.style.overflowY = "scroll";
     }
     setTimeout(() => {
