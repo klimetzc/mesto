@@ -18,7 +18,6 @@ let likeButtons = document.querySelectorAll(".element__like");
 
 popupName.value = username.textContent;
 popupProfession.value = profession.textContent;
-popup.style.display = "flex";
 
 function closePopup() {
   setTimeout(() => {
