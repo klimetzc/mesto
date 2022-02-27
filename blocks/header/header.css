@@ -3,12 +3,16 @@
   padding-top: 45px;
   margin-bottom: 40px;
 
+  display: flex;
+  justify-content: space-between;
+
   border-bottom: 1px solid #545454;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 550px) {
   .header {
-    padding-top: 26px;
+    padding: 26px 27px 0;
     margin-bottom: 42px;
   }
 }

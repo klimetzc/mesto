@@ -10,10 +10,13 @@ const inputButtons = document.querySelectorAll(".popup__input");
 const popupForm = document.querySelector(".popup__form");
 
 const editButton = document.querySelector(".profile__edit-button");
-const submitButton = document.querySelector(".popup__submit");
+let submitButton = document.querySelector(".popup__submit");
 let username = document.querySelector(".profile__username");
 let profession = document.querySelector(".profile__profession");
 const likeButtons = document.querySelectorAll(".element__like");
+
+let headerLogo = document.querySelector(".header__logo");
+let addButton = document.querySelector(".profile__add-button");
 
 
 popupName.value = username.textContent;
@@ -48,13 +51,21 @@ function openPopup() {
   }, 0);
 }
 
-
+popupWindow.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+popup.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup")) {
+    closePopup();
+  }
+});
 editButton.addEventListener("click", (event) => { // fade IN
   openPopup();
 });
 popupCloseButton.addEventListener("click", (event) => { // fade OUT
   closePopup();
 });
+
 submitButton.addEventListener("click", (event) => {
   username.textContent = popupName.value;
   profession.textContent = popupProfession.value;
@@ -82,3 +93,30 @@ likeButtons.forEach((item) => {
   });
 });
 
+let changeThemeButton = document.querySelector(".theme-changer");
+changeThemeButton.addEventListener("click", (event) => {
+  changeTheme();
+});
+
+function changeTheme() {
+  if (!page.classList.contains("theme_dark")) {
+    localStorage.setItem("lightTheme", true);
+    document.documentElement.setAttribute("style",
+      `--primary-color: white; --additional-color: #1B1B1B`);
+  } else {
+    localStorage.removeItem("lightTheme");
+    document.documentElement.removeAttribute("style");
+  }
+  page.classList.toggle("theme_dark");
+  headerLogo.classList.toggle("header__logo_theme_dark");
+  editButton.classList.toggle("profile__edit-button_theme_dark");
+  addButton.classList.toggle("profile__add-button_theme_dark");
+  changeThemeButton.classList.toggle("theme-changer_theme_dark");
+  likeButtons.forEach((item) => {
+    item.classList.toggle("element__like_theme_dark");
+  });
+}
+
+if (localStorage.hasOwnProperty("lightTheme")) {
+  changeTheme();
+}

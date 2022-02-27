@@ -6,7 +6,7 @@
   color: white;
   cursor: pointer;
 
-  border: 2px solid var(--white);
+  border: 2px solid var(--additional-color);
   border-radius: 2px;
   background-image: url("../../../images/buttons/add/addButton.svg");
   background-position: center;

@@ -12,9 +12,9 @@
   z-index: 11;
   position: relative;
 
-  background-color: var(--white);
+  background-color: var(--additional-color);
   border-radius: 10px;
-  color: var(--black);
+  color: var(--primary-color);
 }
 
 @media screen and (max-width: 550px) {

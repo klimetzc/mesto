@@ -6,8 +6,8 @@
 
   width: 100%;
 
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--additional-color);
+  color: var(--primary-color);
   border-radius: 10px;
 
   overflow: hidden;

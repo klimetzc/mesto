@@ -3,8 +3,8 @@
   padding: 14px 18px 14px 18px;
   margin-top: 16px;
 
-  color: var(--white);
-  background-color: var(--black);
+  color: var(--additional-color);
+  background-color: var(--primary-color);
   cursor: pointer;
 
   border: none;

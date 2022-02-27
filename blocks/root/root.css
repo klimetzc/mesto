@@ -1,6 +1,6 @@
 .root {
-  --black: #000000;
-  --white: #ffffff;
+  --primary-color: #000000;
+  --additional-color: #ffffff;
   --hover-button: #313131;
   --hover-icon: #999999;
 
