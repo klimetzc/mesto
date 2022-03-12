@@ -1,4 +1,9 @@
 .page {
+  --primary-color: #000000;
+  --additional-color: #ffffff;
+  --hover-button: #313131;
+  --hover-icon: #999999;
+
   max-width: 880px;
   margin: 0 auto;
   padding: 0 20px 0;

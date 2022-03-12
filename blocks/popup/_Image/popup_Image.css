@@ -1,4 +1,4 @@
-.popupImage > .popup__window {
+.popup_Image > .popup__window {
   width: auto;
   max-width: 90%;
   background: none;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .popupImage > .popup__window {
+  .popup_Image > .popup__window {
     max-width: none;
   }
 }
