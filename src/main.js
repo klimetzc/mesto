@@ -83,9 +83,9 @@ function createCard(obj) {
     togglePopupVisibility(popupImage, fillPopupImage(event.target.src, event.target.alt));
   });
   const like = content.querySelector(".element__like");
-  const isThemeChanged = pageElements.page.classList.contains("theme_dark");
+  const isThemeChanged = pageElements.page.classList.contains("theme_light");
   if (isThemeChanged) {
-    like.classList.add("element__like_theme_dark");
+    like.classList.add("element__like_theme_light");
   }
   return content;
 }

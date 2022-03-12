@@ -7,18 +7,18 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/scrollbar/scrollbar.css);
 @import url(../blocks/theme-changer/theme-changer.css);
-@import url(../blocks/theme-changer/_theme/theme-changer_theme_dark.css);
+@import url(../blocks/theme-changer/_theme/theme-changer_theme_light.css);
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
-@import url(../blocks/header/__logo/_theme/header__logo_theme_dark.css);
+@import url(../blocks/header/__logo/_theme/header__logo_theme_light.css);
 
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
-@import url(../blocks/profile/__add-button/_theme/profile__add-button_theme_dark.css);
+@import url(../blocks/profile/__add-button/_theme/profile__add-button_theme_light.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
-@import url(../blocks/profile/__edit-button/_theme/profile__edit-button_theme_dark.css);
+@import url(../blocks/profile/__edit-button/_theme/profile__edit-button_theme_light.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__names/profile__names.css);
 @import url(../blocks/profile/__profession/profile__profession.css);
@@ -33,7 +33,7 @@
 @import url(../blocks/element/__like/element__like.css);
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__like/_active/element__like_active.css);
-@import url(../blocks/element/__like/_theme/element__like_theme_dark.css);
+@import url(../blocks/element/__like/_theme/element__like_theme_light.css);
 @import url(../blocks/element/__delete/element__delete.css);
 
 @import url(../blocks/footer/footer.css);
