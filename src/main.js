@@ -9,6 +9,7 @@ const cardsContainer = document.querySelector(".elements");
 let username = document.querySelector(".profile__username");
 let profession = document.querySelector(".profile__profession");
 
+// test for theme changer
 const pageElements = {page, headerLogo, editButton, addButton, likeButtons, changeThemeButton};
 export default pageElements;
 
@@ -68,18 +69,7 @@ const initialPopups = [
   }
 ];
 
-for (let popup of initialPopups) {
-  addPopup(popup);
-}
-
-for (let card of initialCards) {
-  addCard(card);
-}
-
-const popupEdit = document.querySelector(".popupEdit");
-const popupAdd = document.querySelector(".popupAdd");
-const popupImage = document.querySelector(".popupImage");
-
+// Image and Name for Image popup
 let currentImage;
 let currentName;
 
@@ -102,8 +92,8 @@ function addPopup(obj) {
       break;
   }
   const popupTitle = content.querySelector(".popup__title");
-  const popupInput1 = content.querySelector(".popup__input1");
-  const popupInput2 = content.querySelector(".popup__input2");
+  const popupInput1 = content.querySelector(".popup_input_1");
+  const popupInput2 = content.querySelector(".popup_input_2");
   const submitButton = content.querySelector(".popup__submit");
   const contentImage = content.querySelector(".popup__image");
   const caption = content.querySelector(".popup__caption");
@@ -142,11 +132,12 @@ function addPopup(obj) {
   inputButtons.forEach(function (item) {
     // validation
     item.addEventListener("input", function () {
-      let errorsLength = content.querySelectorAll(".popup__input:invalid").length;
+      const errorsLength = content.querySelectorAll(".popup__input:invalid").length;
+      const submit = content.querySelector(".popup__submit");
       if (errorsLength > 0) {
-        content.querySelector(".popup__submit").disabled = true;
+        submit.disabled = true;
       } else if (errorsLength === 0) {
-        content.querySelector(".popup__submit").disabled = false;
+        submit.disabled = false;
       }
     });
   });
@@ -178,24 +169,26 @@ function addCard(obj) {
 }
 
 function togglePopupVisibility(popupName, popupFunction = undefined) {
+  // Hides\shows the window and calls the corresponding function on it
   if (popupFunction) popupFunction(popupName);
   popupName.classList.toggle("popup_closed");
 }
 
 function popupEditFunction(popup) {
-
+  const firstInput = popup.querySelector(".popup_input_1");
+  const secondInput = popup.querySelector(".popup_input_2");
   if (popup.classList.contains("popup_closed")) {
-    popup.querySelector(".popup__input1").value = username.textContent;
-    popup.querySelector(".popup__input2").value = profession.textContent;
+    firstInput.value = username.textContent;
+    secondInput.value = profession.textContent;
   }
-  username.textContent = popup.querySelector(".popup__input1").value;
-  profession.textContent = popup.querySelector(".popup__input2").value;
+  username.textContent = firstInput.value;
+  profession.textContent = secondInput.value;
 }
 
 function popupAddFunction(popup) {
   const card = {
-    name: popup.querySelector(".popup__input1").value,
-    link: popup.querySelector(".popup__input2").value
+    name: popup.querySelector(".popup_input_1").value,
+    link: popup.querySelector(".popup_input_2").value
   };
   addCard(card);
   checkEmpty();
@@ -211,6 +204,7 @@ function popupImageFunction(popup) {
 }
 
 function checkEmpty() {
+  // Adds the appropriate label if there are no cards
   const text = document.querySelector(".elements__text");
   if (!document.querySelectorAll(".element").length) {
     text.style.display = "block";
@@ -219,9 +213,22 @@ function checkEmpty() {
   }
 }
 
+for (let popup of initialPopups) {
+  addPopup(popup);
+}
+
+for (let card of initialCards) {
+  addCard(card);
+}
+
+const popupEdit = document.querySelector(".popupEdit");
+const popupAdd = document.querySelector(".popupAdd");
+const popupImage = document.querySelector(".popupImage");
+
 editButton.addEventListener("click", () => {
   togglePopupVisibility(popupEdit, popupEditFunction);
 });
+
 addButton.addEventListener("click", () => {
   togglePopupVisibility(popupAdd);
 });
