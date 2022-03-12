@@ -1,4 +1,13 @@
 .popup__form {
   display: block;
   overflow: auto;
+  max-width: 75vw;
+  max-height: 75vh;
+
+}
+
+@media screen and (max-width: 550px) {
+  .popup__form {
+    max-width: 100%;
+  }
 }

@@ -1,4 +1,7 @@
 .popup_closed {
   opacity: 0;
-  /*transform: translateY(-100vh);*/
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all .4s ease 0s;
+
 }

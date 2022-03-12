@@ -2,6 +2,10 @@
   background-image: url("../../../../images/buttons/like/like_active.svg");
 }
 
+.element__like_active:hover {
+  background-image: url("../../../../images/buttons/like/like_activeHovered.svg");
+}
+
 .element__like_active.element__like_theme_dark:hover {
   background-image: url("../../../../images/buttons/like/like_activeHovered.svg");
 }

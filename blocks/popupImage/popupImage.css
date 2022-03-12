@@ -1,0 +1,13 @@
+.popupImage > .popup__window {
+  width: auto;
+  max-width: 90%;
+  background: none;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+@media screen and (max-width: 500px) {
+  .popupImage > .popup__window {
+    max-width: none;
+  }
+}

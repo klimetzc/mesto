@@ -1,0 +1,10 @@
+.elements__text {
+  width: 100%;
+  display: none;
+  text-align: center;
+  color: var(--hover-button);
+  font-size: 30px;
+  /*padding: 40px;*/
+  /*grid-column: span 3;*/
+  user-select: none;
+}

@@ -13,7 +13,6 @@
 <body class="page">
 <header class="header">
   <a href="https://github.com/klimetzc/mesto" target="_blank" class="header__logo">
-    <!--    <img src="images/logo_light.svg" alt="Место - Россия" class="">-->
   </a>
   <button type="button" class="theme-changer"></button>
 </header>
@@ -34,71 +33,42 @@
 </section>
 
 <section class="elements">
-  <article class="element">
-    <img src="images/piter.jpg" alt="Питерская электричка" class="element__image">
-    <h2 class="element__title">Санкт-Петербург</h2>
-    <button class="element__like"></button>
-  </article>
-  <article class="element">
-    <img src="images/moscow.jpg" alt="Москва-сити" class="element__image">
-    <h2 class="element__title">Москва</h2>
-    <button class="element__like">
+  <p class="elements__text">Вы ещё не добавили новых мест.</p>
+  <template id="element">
+    <article class="element">
+      <img class="element__image">
+      <h2 class="element__title"></h2>
+      <button class="element__like"></button>
+      <button class="element__delete"></button>
+    </article>
+  </template>
 
-
-    </button>
-  </article>
-  <article class="element">
-    <img src="images/murmansk.jpg" alt="Дорога с высоты птичьего полёта" class="element__image">
-    <h2 class="element__title">Мурманск</h2>
-    <button class="element__like">
-
-    </button>
-  </article>
-  <article class="element">
-    <img src="images/3.png" alt="Снежная гора" class="element__image">
-    <h2 class="element__title">Домбай</h2>
-    <button class="element__like">
-
-    </button>
-  </article>
-  <article class="element">
-    <img src="images/2.png" alt="Равнины" class="element__image">
-    <h2 class="element__title">Гора Эльбрус</h2>
-    <button class="element__like">
-
-    </button>
-  </article>
-  <article class="element">
-    <img src="images/1.png" alt="Старый храм" class="element__image">
-    <h2 class="element__title">Карачаево-Черкессия</h2>
-    <button class="element__like">
-
-    </button>
-  </article>
 </section>
 
 <footer class="footer">
   <p class="footer__content">&copy; 2022 Mesto Russia</p>
 </footer>
-
-<section class="popup popup_closed" id="edit-profile">
-
-  <div class="popup__window">
-    <form class="popup__form">
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" name="name" id="name" class="popup__input popup__input_type_name" placeholder="Ваше имя"
-             required
-             pattern="\S+.*">
-      <input type="text" name="profession" id="profession" class="popup__input popup__input_type_profession"
-             placeholder="Ваша профессия"
-             required pattern="\S+.*">
-      <button type="submit" class="popup__submit">Сохранить</button>
-    </form>
-    <button type="button" class="popup__close-button"></button>
+<template id="popup">
+  <div class="popup popup_closed">
+    <div class="popup__window">
+      <form class="popup__form">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" class="popup__input popup__input_type_name popup__input1"
+               required pattern="\S+.*">
+        <input type="text" name="profession"
+               class="popup__input popup__input_type_profession popup__input2" required
+               pattern="\S+.*">
+        <img class="popup__image">
+        <p class="popup__caption"></p>
+        <button type="submit" class="popup__submit">Сохранить</button>
+      </form>
+      <button type="button" class="popup__close-button"></button>
+    </div>
   </div>
+</template>
 
-</section>
-<script src="src/script.js"></script>
+<script src="src/main.js" type="module"></script>
+<script src="src/changeTheme.js" type="module"></script>
 </body>
 
 </html>

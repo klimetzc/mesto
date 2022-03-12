@@ -11,13 +11,14 @@
 
   background-color: rgba(0, 0, 0, 0.5);
 
-  transition: all .4s;
+  /* transition: all 2.4s; */
+  transition: opacity .4s ease 0s, background-color .8s ease;
   opacity: 1;
 
   width: 100%;
   box-sizing: border-box;
 
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;

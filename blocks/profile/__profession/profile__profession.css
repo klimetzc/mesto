@@ -7,6 +7,7 @@
   line-height: 22px;
   text-overflow: ellipsis;
   overflow: hidden;
+  /* test comment */
 }
 
 @media screen and (max-width: 550px) {

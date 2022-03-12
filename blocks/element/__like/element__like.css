@@ -14,6 +14,7 @@
 }
 
 .element__like:hover {
+  transform: scale(1.2);
   color: var(--hover-icon);
   fill: var(--hover-icon);
   background-image: url("../../../images/buttons/like/likeHovered.svg");
