@@ -2,8 +2,8 @@
   width: 100%;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
-  justify-content: start;
+  grid-template-columns: repeat(auto-fit, 282px);
+  justify-content: space-evenly;
   row-gap: 20px;
   column-gap: 17px;
 }

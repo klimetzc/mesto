@@ -5,6 +5,6 @@
   color: var(--hover-button);
   font-size: 30px;
   /*padding: 40px;*/
-  /*grid-column: span 3;*/
+  grid-column: span 3;
   user-select: none;
 }
