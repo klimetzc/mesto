@@ -13,11 +13,11 @@ const popupImage = document.querySelector(".popup_image");
 
 const popups = document.querySelectorAll(".popup");
 const closeButtons = document.querySelectorAll(".popup__close-button");
-const popupsForms = document.querySelectorAll(".popup_form");
+const popupsForms = document.querySelectorAll(".popup__form");
 const noCardsText = document.querySelector(".elements__text");
 
-const addForm = popupAdd.querySelector(".popup__window > .popup_form");
-const editForm = popupEdit.querySelector(".popup__window > .popup_form");
+const addForm = popupAdd.querySelector(".popup__window > .popup__form");
+const editForm = popupEdit.querySelector(".popup__window > .popup__form");
 const popupImageSrc = document.querySelector(".popup__image");
 const popupImageCaption = document.querySelector(".popup__caption");
 const popupUsername = document.querySelector(".popup__input_type_username");
