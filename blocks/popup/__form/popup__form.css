@@ -3,7 +3,7 @@
   overflow: auto;
   max-width: 75vw;
   max-height: 75vh;
-
+  width: 100%;
 }
 
 @media screen and (max-width: 550px) {

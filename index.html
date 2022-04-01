@@ -12,14 +12,16 @@
 
 <body class="page">
   <header class="header">
-    <a href="https://github.com/klimetzc/mesto" target="_blank" class="header__logo">
+    <a href="https://github.com/klimetzc/mesto" target="_blank"
+      class="header__logo">
     </a>
     <button type="button" class="theme-changer"></button>
   </header>
 
   <section class="profile">
     <div class="profile__user">
-      <img src="images/avatar.jpg" alt="Аватар пользователя (динамический)" class="profile__avatar">
+      <img src="images/avatar.jpg" alt="Аватар пользователя (динамический)"
+        class="profile__avatar">
       <div class="profile__info">
         <div class="profile__names">
           <h1 class="profile__username">Жак-Ив Кусто</h1>
@@ -49,17 +51,25 @@
     <p class="footer__content">&copy; 2022 Mesto Russia</p>
   </footer>
 
-  <!-- POPUP START -->
+  <!-- POPUPS START -->
   <div class="popup popup_edit">
     <div class="popup__window">
-      <form class="popup__form">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" class="popup__input popup__input_type_username" placeholder="Ваше имя"
-               required pattern="\S+.*">
-        <input type="text" name="profession"
-               class="popup__input  popup__input_type_profession" placeholder="Ваша профессия" required
-               pattern="\S+.*">
-        <button type="submit" class="popup__submit popup__submit_edit">Сохранить</button>
+      <form class="form-edit popup__form">
+        <fieldset class="popup__fieldset">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input id="input_name" type="text"
+            class="popup__input popup__input_type_username"
+            placeholder="Ваше имя" pattern="\S+.*" minlength="2" maxlength="40"
+            required>
+          <span class="popup__error-message input_name-error"></span>
+          <input id="input_profession" type="text" name="profession"
+            class="popup__input  popup__input_type_profession"
+            placeholder="Ваша профессия" pattern="\S+.*" minlength="2"
+            maxlength="200" required>
+          <span class="popup__error-message input_profession-error"></span>
+          <button type="submit"
+            class="popup__submit popup__submit_edit">Сохранить</button>
+        </fieldset>
       </form>
       <button type="button" class="popup__close-button"></button>
     </div>
@@ -67,14 +77,21 @@
 
   <div class="popup popup_add">
     <div class="popup__window">
-      <form class="popup__form">
-        <h2 class="popup__title">Новое место</h2>
-        <input type="text" class="popup__input  popup__input_type_place" placeholder="Название места"
-               required pattern="\S+.*">
-        <input type="text" name="profession"
-               class="popup__input  popup__input_type_place-image" placeholder="Ссылка на изображение" required
-               pattern="\S+.*">
-        <button type="submit" class="popup__submit popup__submit_add">Создать</button>
+      <form class="form-add popup__form">
+        <fieldset class="popup__fieldset">
+          <h2 class="popup__title">Новое место</h2>
+          <input id="input_place" type="text"
+            class="popup__input  popup__input_type_place"
+            placeholder="Название места" minlength="2" maxlength="30" required
+            pattern="\S+.*">
+          <span class="popup__error-message input_place-error"></span>
+          <input id="input_image" type="url" name="image"
+            class="popup__input  popup__input_type_place-image"
+            placeholder="Ссылка на изображение" required pattern="\S+.*">
+          <span class="popup__error-message input_image-error"></span>
+          <button type="submit"
+            class="popup__submit popup__submit_add">Создать</button>
+        </fieldset>
       </form>
       <button type="button" class="popup__close-button"></button>
     </div>
@@ -82,15 +99,17 @@
 
   <div class="popup popup_image">
     <div class="popup__window">
-      <img class="popup__image" src="https://via.placeholder.com/150" alt="Новое место">
+      <img class="popup__image" src="https://via.placeholder.com/150"
+        alt="Новое место">
       <p class="popup__caption">Новое место</p>
       <button type="button" class="popup__close-button"></button>
     </div>
   </div>
-  <!-- POPUP END -->
+  <!-- POPUPS END -->
 
   <script src="src/main.js" type="module"></script>
   <script src="src/changeTheme.js" type="module"></script>
+  <script src="src/validate.js"></script>
 </body>
 
 </html>

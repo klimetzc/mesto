@@ -18,6 +18,7 @@ const noCardsText = document.querySelector(".elements__text");
 
 const addForm = popupAdd.querySelector(".popup__window > .popup__form");
 const editForm = popupEdit.querySelector(".popup__window > .popup__form");
+const editSubmitButton = document.querySelector(".popup__submit_edit");
 const popupImageSrc = document.querySelector(".popup__image");
 const popupImageCaption = document.querySelector(".popup__caption");
 const popupUsername = document.querySelector(".popup__input_type_username");
@@ -27,21 +28,21 @@ const username = document.querySelector(".profile__username");
 const profession = document.querySelector(".profile__profession");
 
 // test for theme changer
-const pageElements = {page, headerLogo, editButton, addButton, changeThemeButton};
+const pageElements = { page, headerLogo, editButton, addButton, changeThemeButton };
 export default pageElements;
 
 const initialCards = [
   {
     name: "Мурманск",
-    link: "https://images.unsplash.com/photo-1601291680100-2c14b5865905?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    link: "https://images.unsplash.com/photo-1601291680100-2c14b5865905?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
   },
   {
     name: "Санкт-Петербург",
-    link: "https://images.unsplash.com/photo-1555460285-763ba96917d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    link: "https://images.unsplash.com/photo-1555460285-763ba96917d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
   {
     name: "Москва",
-    link: "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    link: "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
   {
     name: "Архыз",
@@ -97,7 +98,21 @@ function createCard(data) {
 }
 
 function togglePopupVisibility(popup) {
+  if (!popup.classList.contains("popup_opened")) {
+    document.addEventListener("keydown", handleEscUp);
+  } else {
+    document.removeEventListener("keydown", handleEscUp);
+  }
+
   popup.classList.toggle("popup_opened");
+}
+
+function handleEscUp(event) {
+  //event.preventDefault();
+  const activePopup = document.querySelector(".popup_opened");
+  if (event.key === "Escape") {
+    togglePopupVisibility(activePopup);
+  }
 }
 
 function editProfile() {
@@ -113,7 +128,7 @@ function insertInfoFromPage() {
 function addPlace() {
   const card = {
     name: popupAdd.querySelector(".popup__input_type_place").value,
-    link: popupAdd.querySelector(".popup__input_type_place-image").value
+    link: popupAdd.querySelector(".popup__input_type_place-image").value,
   };
   const newCard = createCard(card);
   cardsContainer.prepend(newCard);
@@ -143,6 +158,11 @@ for (const card of initialCards) {
 editButton.addEventListener("click", () => {
   insertInfoFromPage();
   togglePopupVisibility(popupEdit);
+  editSubmitButton.classList.remove("popup__submit_inactive");
+  popupEdit.querySelectorAll(".popup__error-message").forEach((elem) => {
+    elem.classList.remove("form__input-error_active");
+    elem.textContent = "";
+  });
 });
 
 addButton.addEventListener("click", () => {
@@ -168,7 +188,6 @@ popupsForms.forEach((item) => {
     event.preventDefault();
   });
 });
-
 
 addForm.addEventListener("submit", (event) => {
   togglePopupVisibility(popupAdd);

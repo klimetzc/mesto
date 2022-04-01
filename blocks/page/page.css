@@ -3,6 +3,7 @@
   --additional-color: #ffffff;
   --hover-button: #313131;
   --hover-icon: #999999;
+  --hover-text: white;
 
   max-width: 880px;
   margin: 0 auto;
@@ -16,7 +17,7 @@
   color: var(--additional-color);
   font-family: Inter, Roboto, sans-serif;
 
-  transition: .4s;
+  transition: 0.4s;
 }
 
 @media screen and (max-width: 550px) {

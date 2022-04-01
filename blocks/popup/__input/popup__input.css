@@ -1,6 +1,6 @@
 .popup__input {
   width: 100%;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   padding: 0 0 8px 0;
 
   position: relative;
@@ -21,10 +21,6 @@
   background-size: 15px;
   background-repeat: no-repeat;
   background-position: right 6.5px top 6.5px;
-}
-
-.popup__input:not(:placeholder-shown) {
-  border-color: #EF5350;
 }
 
 .popup__input:valid {
