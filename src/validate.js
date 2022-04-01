@@ -29,7 +29,7 @@ const setEventListeners = (
   formElement,
   { inputSelector, submitButtonSelector, inactiveButtonClass, ...rest }
 ) => {
-  const inputList = formElement.querySelectorAll(".popup__input");
+  const inputList = formElement.querySelectorAll(`${inputSelector}`);
   const buttonElement = formElement.querySelector(`${submitButtonSelector}`);
   formElement.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -38,7 +38,7 @@ const setEventListeners = (
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement, rest);
-      toggleButtonState(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement, inactiveButtonClass);
     });
   });
 };
@@ -49,12 +49,12 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add("popup__submit_inactive");
+    buttonElement.classList.add(`${inactiveButtonClass}`);
     buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove("popup__submit_inactive");
+    buttonElement.classList.remove(`${inactiveButtonClass}`);
     buttonElement.disabled = false;
   }
 };
