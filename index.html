@@ -57,16 +57,16 @@
       <form class="form-edit popup__form">
         <fieldset class="popup__fieldset">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input id="input_name" type="text"
+          <input id="input__name" type="text"
             class="popup__input popup__input_type_username"
             placeholder="Ваше имя" pattern="\S+.*" minlength="2" maxlength="40"
             required>
-          <span class="popup__error-message input_name-error"></span>
-          <input id="input_profession" type="text" name="profession"
+          <span class="popup__error-message input__name-error"></span>
+          <input id="input__profession" type="text" name="profession"
             class="popup__input  popup__input_type_profession"
             placeholder="Ваша профессия" pattern="\S+.*" minlength="2"
             maxlength="200" required>
-          <span class="popup__error-message input_profession-error"></span>
+          <span class="popup__error-message input__profession-error"></span>
           <button type="submit"
             class="popup__submit popup__submit_edit">Сохранить</button>
         </fieldset>
@@ -80,15 +80,15 @@
       <form class="form-add popup__form">
         <fieldset class="popup__fieldset">
           <h2 class="popup__title">Новое место</h2>
-          <input id="input_place" type="text"
+          <input id="input__place" type="text"
             class="popup__input  popup__input_type_place"
             placeholder="Название места" minlength="2" maxlength="30" required
             pattern="\S+.*">
-          <span class="popup__error-message input_place-error"></span>
-          <input id="input_image" type="url" name="image"
+          <span class="popup__error-message input__place-error"></span>
+          <input id="input__image" type="url" name="image"
             class="popup__input  popup__input_type_place-image"
             placeholder="Ссылка на изображение" required pattern="\S+.*">
-          <span class="popup__error-message input_image-error"></span>
+          <span class="popup__error-message input__image-error"></span>
           <button type="submit"
             class="popup__submit popup__submit_add">Создать</button>
         </fieldset>
