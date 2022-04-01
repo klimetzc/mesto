@@ -19,12 +19,12 @@
   text-align: center;
 }
 
-.popup__submit:disabled {
+/* .popup__submit:disabled {
   background-color: gray;
-}
+} */
 
 .popup__submit:disabled:hover {
-  background-color: gray;
+  /* background-color: gray; */
   cursor: default;
 }
 
