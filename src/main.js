@@ -192,6 +192,7 @@ popupsForms.forEach((item) => {
 addForm.addEventListener("submit", (event) => {
   togglePopupVisibility(popupAdd);
   addPlace();
+  addForm.reset();
 });
 
 editForm.addEventListener("submit", (event) => {
