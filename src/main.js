@@ -1,127 +1,140 @@
-import * as pE from "./pageElements.js";
+import * as pageElements from "./pageElements.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 
-const addValidation = new FormValidator({
-  formSelector: ".popup__form_add",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: "popup__submit_inactive",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-});
-const editValidation = new FormValidator({
-  formSelector: ".popup__form_edit",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: "popup__submit_inactive",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-});
-addValidation.enableValidation();
-editValidation.enableValidation();
+const validatorAddForm = new FormValidator(
+  {
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__submit",
+    inactiveButtonClass: "popup__submit_inactive",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__error_visible",
+  },
+  ".popup__form_add"
+);
+const validatorEditForm = new FormValidator(
+  {
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__submit",
+    inactiveButtonClass: "popup__submit_inactive",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__error_visible",
+  },
+  ".popup__form_edit"
+);
+validatorAddForm.enableValidation();
+validatorEditForm.enableValidation();
 
-
-for (const card of initialCards) {
-  const newCard = new Card(card, "#element");
-  pE.cardsContainer.append(newCard.createCard());
+function renderCard(card, selector) {
+  const newCard = new Card(card, selector);
+  return newCard.createCard();
 }
 
-export function togglePopupVisibility(popup) {
-  if (!popup.classList.contains("popup_opened")) {
-    document.addEventListener("keydown", handleEscUp);
+function insertCard(card, selector, isPrepend = false) {
+  if (isPrepend) {
+    pageElements.cardsContainer.prepend(renderCard(card, selector));
   } else {
-    document.removeEventListener("keydown", handleEscUp);
+    pageElements.cardsContainer.append(renderCard(card, selector));
   }
+}
 
-  popup.classList.toggle("popup_opened");
+for (const card of initialCards) {
+  insertCard(card, "#element");
+}
+
+export function openPopup(popup) {
+  document.addEventListener("keydown", handleEscUp);
+  popup.classList.add("popup_opened");
+}
+
+function closePopup(popup) {
+  document.removeEventListener("keydown", handleEscUp);
+  popup.classList.remove("popup_opened");
 }
 
 function editProfile() {
-  pE.username.textContent = pE.popupUsername.value;
-  pE.profession.textContent = pE.popupProfession.value;
+  pageElements.username.textContent = pageElements.popupUsername.value;
+  pageElements.profession.textContent = pageElements.popupProfession.value;
+
 }
 
 function insertInfoFromPage() {
-  pE.popupUsername.value = pE.username.textContent;
-  pE.popupProfession.value = pE.profession.textContent;
+  pageElements.popupUsername.value = pageElements.username.textContent;
+  pageElements.popupProfession.value = pageElements.profession.textContent;
+  validatorEditForm.checkFormValidity();
 }
 
 function addPlace() {
   const card = {
-    name: pE.popupAdd.querySelector(".popup__input_type_place").value,
-    link: pE.popupAdd.querySelector(".popup__input_type_place-image").value,
+    name: pageElements.popupAdd.querySelector(".popup__input_type_place").value,
+    link: pageElements.popupAdd.querySelector(".popup__input_type_place-image").value,
   };
-  const newCard = new Card(card, "#element");
-  pE.cardsContainer.prepend(newCard.createCard());
+  insertCard(card, "#element", true);
   checkEmpty();
 }
 
 export function fillPopupImage(currentImage, currentName) {
-  pE.popupImageSrc.src = currentImage;
-  pE.popupImageCaption.textContent = currentName;
-  pE.popupImageSrc.alt = currentName;
+  pageElements.popupImageSrc.src = currentImage;
+  pageElements.popupImageCaption.textContent = currentName;
+  pageElements.popupImageSrc.alt = currentName;
 }
 
 export function checkEmpty() {
   // Adds the appropriate label if there are no cards
   if (!document.querySelectorAll(".element").length) {
-    pE.noCardsText.style.display = "block";
+    pageElements.noCardsText.style.display = "block";
   } else {
-    pE.noCardsText.style.display = "none";
+    pageElements.noCardsText.style.display = "none";
   }
 }
 
 // HANDLERS
 function handleEscUp(event) {
-  const activePopup = document.querySelector(".popup_opened");
   if (event.key === "Escape") {
-    togglePopupVisibility(activePopup);
+    const activePopup = document.querySelector(".popup_opened");
+    closePopup(activePopup);
   }
 }
 
 function handleEditButton() {
   insertInfoFromPage();
-  togglePopupVisibility(pE.popupEdit);
-  pE.editSubmitButton.classList.remove("popup__submit_inactive");
-  pE.popupEdit.querySelectorAll(".popup__error-message").forEach((elem) => {
-    elem.classList.remove("form__input-error_active");
-    elem.textContent = "";
-  });
+  openPopup(pageElements.popupEdit);
 }
 
 function handleAddButton() {
-  togglePopupVisibility(pE.popupAdd);
+  openPopup(pageElements.popupAdd);
 }
 
 function handleCloseButton(event) {
   const popup = event.target.closest(".popup");
-  togglePopupVisibility(popup);
+  closePopup(popup);
 }
 
 function handleAddForm() {
-  togglePopupVisibility(pE.popupAdd);
+  closePopup(pageElements.popupAdd);
   addPlace();
-  pE.addForm.reset();
+  pageElements.formAdd.reset();
+  validatorAddForm.toggleButtonState();
 }
 
-function handleEditForm() {
-  togglePopupVisibility(pE.popupEdit);
+function handleEditForm(event) {
+  event.preventDefault();
+  closePopup(pageElements.popupEdit);
   editProfile();
 }
 
 function handleClickedOverlay(event) {
-  if (event.target.classList.contains("popup")) togglePopupVisibility(event.target);
+  if (event.target.classList.contains("popup")) closePopup(event.target);
 }
 
 // SET LISTENERS
-pE.editButton.addEventListener("click", handleEditButton);
-pE.addButton.addEventListener("click", handleAddButton);
-pE.closeButtons.forEach((item) => {
+pageElements.buttonEdit.addEventListener("click", handleEditButton);
+pageElements.buttonAdd.addEventListener("click", handleAddButton);
+pageElements.buttonsClose.forEach((item) => {
   item.addEventListener("click", handleCloseButton);
 });
-pE.popups.forEach((item) => {
+pageElements.popups.forEach((item) => {
   item.addEventListener("click", handleClickedOverlay);
 });
-pE.addForm.addEventListener("submit", handleAddForm);
-pE.editForm.addEventListener("submit", handleEditForm);
+pageElements.formAdd.addEventListener("submit", handleAddForm);
+pageElements.formEdit.addEventListener("submit", handleEditForm);

@@ -9,3 +9,6 @@
   object-fit: cover;
   object-position: bottom;
 }
+.element__image:hover {
+  transform: scale(1.1);
+}

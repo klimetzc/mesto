@@ -19,10 +19,6 @@
   text-align: center;
 }
 
-/* .popup__submit:disabled {
-  background-color: gray;
-} */
-
 .popup__submit:disabled:hover {
   /* background-color: gray; */
   cursor: default;
@@ -30,6 +26,7 @@
 
 .popup__submit:hover {
   background-color: var(--hover-button);
+  border-color: var(--hover-button);
   color: var(--hover-text);
 }
 

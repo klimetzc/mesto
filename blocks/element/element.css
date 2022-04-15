@@ -16,6 +16,4 @@
 
 }
 
-.element:hover > .element__image {
-  transform: scale(1.1);
-}
+

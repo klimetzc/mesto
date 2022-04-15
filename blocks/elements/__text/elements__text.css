@@ -2,7 +2,7 @@
   width: 100%;
   display: none;
   text-align: center;
-  color: var(--hover-button);
+  color: #545454;
   font-size: 30px;
   /*padding: 40px;*/
   grid-column: span 3;
