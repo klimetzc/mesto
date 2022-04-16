@@ -1,6 +1,7 @@
 import * as pageElements from "./pageElements.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import { initialCards } from "./cards.js";
 
 const validatorAddForm = new FormValidator(
   {
@@ -10,7 +11,7 @@ const validatorAddForm = new FormValidator(
     inputErrorClass: "popup__input_type_error",
     errorClass: "popup__error_visible",
   },
-  ".popup__form_add"
+  pageElements.formAdd
 );
 const validatorEditForm = new FormValidator(
   {
@@ -20,7 +21,7 @@ const validatorEditForm = new FormValidator(
     inputErrorClass: "popup__input_type_error",
     errorClass: "popup__error_visible",
   },
-  ".popup__form_edit"
+  pageElements.formEdit
 );
 validatorAddForm.enableValidation();
 validatorEditForm.enableValidation();
@@ -55,13 +56,11 @@ function closePopup(popup) {
 function editProfile() {
   pageElements.username.textContent = pageElements.popupUsername.value;
   pageElements.profession.textContent = pageElements.popupProfession.value;
-
 }
 
 function insertInfoFromPage() {
   pageElements.popupUsername.value = pageElements.username.textContent;
   pageElements.popupProfession.value = pageElements.profession.textContent;
-  validatorEditForm.checkFormValidity();
 }
 
 function addPlace() {
@@ -97,17 +96,16 @@ function handleEscUp(event) {
 }
 
 function handleEditButton() {
+  validatorEditForm.toggleButtonState();
+  validatorEditForm.hideInputErrors();
   insertInfoFromPage();
   openPopup(pageElements.popupEdit);
 }
 
 function handleAddButton() {
+  validatorAddForm.toggleButtonState();
+  validatorAddForm.hideInputErrors();
   openPopup(pageElements.popupAdd);
-}
-
-function handleCloseButton(event) {
-  const popup = event.target.closest(".popup");
-  closePopup(popup);
 }
 
 function handleAddForm() {
@@ -123,18 +121,19 @@ function handleEditForm(event) {
   editProfile();
 }
 
-function handleClickedOverlay(event) {
-  if (event.target.classList.contains("popup")) closePopup(event.target);
+function handleClosePopup(event) {
+  const currentPopup = event.target.closest(".popup");
+  const isClosable =
+    event.target.classList.contains("popup") ||
+    event.target.classList.contains("popup__close-button");
+  if (isClosable) closePopup(currentPopup);
 }
 
 // SET LISTENERS
 pageElements.buttonEdit.addEventListener("click", handleEditButton);
 pageElements.buttonAdd.addEventListener("click", handleAddButton);
-pageElements.buttonsClose.forEach((item) => {
-  item.addEventListener("click", handleCloseButton);
-});
 pageElements.popups.forEach((item) => {
-  item.addEventListener("click", handleClickedOverlay);
+  item.addEventListener("click", handleClosePopup);
 });
 pageElements.formAdd.addEventListener("submit", handleAddForm);
 pageElements.formEdit.addEventListener("submit", handleEditForm);
