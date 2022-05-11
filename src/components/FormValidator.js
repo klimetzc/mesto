@@ -1,6 +1,5 @@
 export default class FormValidator {
   constructor(data, formElement) {
-    // this.formSelector = formElement;
     this.inputSelector = data.inputSelector;
     this.submitButtonSelector = data.submitButtonSelector;
     this.inactiveButtonClass = data.inactiveButtonClass;
@@ -37,7 +36,7 @@ export default class FormValidator {
   hideInputErrors() {
     this._inputList.forEach((input) => {
       this._hideInputError(input);
-    })
+    });
   }
 
   _setEventListeners() {

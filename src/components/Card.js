@@ -1,8 +1,5 @@
-import * as pageElements from "./pageElements.js";
-import { fillPopupImage, checkEmpty, openPopup } from "./main.js";
-
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this.image = data.link;
     this.name = data.name;
     this._element = document
@@ -12,6 +9,7 @@ export default class Card {
     this._buttonLike = this._element.querySelector(".element__like");
     this._buttonDelete = this._element.querySelector(".element__delete");
     this._elementImage = this._element.querySelector(".element__image");
+    this._handleCardClick = handleCardClick;
   }
 
   createCard() {
@@ -19,7 +17,8 @@ export default class Card {
     this._elementImage.alt = this.name;
     this._element.querySelector(".element__title").textContent = this.name;
 
-    const isThemeChanged = pageElements.page.classList.contains("theme_light");
+    const page = document.querySelector(".page");
+    const isThemeChanged = page.classList.contains("theme_light");
     if (isThemeChanged) this._buttonLike.classList.add("element__like_theme_light");
 
     this._setEventListeners();
@@ -32,17 +31,22 @@ export default class Card {
 
   _handleDeleteButton(event) {
     event.target.closest(".element").remove();
-    checkEmpty();
+    Card.checkEmpty();
   }
 
-  _handleImageClick(event) {
-    openPopup(pageElements.popupImage);
-    fillPopupImage(event.target.src, event.target.alt);
+  static checkEmpty() {
+    // Adds the appropriate label if there are no cards
+    const noCardsText = document.querySelector(".elements__text");
+    if (!document.querySelectorAll(".element").length) {
+      noCardsText.style.display = "block";
+    } else {
+      noCardsText.style.display = "none";
+    }
   }
 
   _setEventListeners() {
     this._element.querySelector(".element__like").addEventListener("click", this._handleLikeButton);
     this._buttonDelete.addEventListener("click", this._handleDeleteButton);
-    this._elementImage.addEventListener("click", this._handleImageClick);
+    this._elementImage.addEventListener("click", this._handleCardClick);
   }
 }
