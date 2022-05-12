@@ -56,8 +56,8 @@
       <form class="form-edit popup__form popup__form_edit" novalidate>
         <fieldset class="popup__fieldset">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input id="name" type="text" class="popup__input popup__input_type_username" placeholder="Ваше имя"
-            pattern="\S+.*" minlength="2" maxlength="40" required>
+          <input id="name" type="text" name="name" class="popup__input popup__input_type_username"
+            placeholder="Ваше имя" pattern="\S+.*" minlength="2" maxlength="40" required>
           <span class="popup__error-message name-error"></span>
           <input id="profession" type="text" name="profession" class="popup__input  popup__input_type_profession"
             placeholder="Ваша профессия" pattern="\S+.*" minlength="2" maxlength="200" required>
@@ -74,8 +74,8 @@
       <form class="form-add popup__form popup__form_add" novalidate>
         <fieldset class="popup__fieldset">
           <h2 class="popup__title">Новое место</h2>
-          <input id="place" type="text" class="popup__input  popup__input_type_place" placeholder="Название места"
-            minlength="2" maxlength="30" required pattern="\S+.*">
+          <input id="place" type="text" name="place" class="popup__input  popup__input_type_place"
+            placeholder="Название места" minlength="2" maxlength="30" required pattern="\S+.*">
           <span class="popup__error-message place-error"></span>
           <input id="image" type="url" name="image" class="popup__input  popup__input_type_place-image"
             placeholder="Ссылка на изображение" required pattern="\S+.*">

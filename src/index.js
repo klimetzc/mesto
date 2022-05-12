@@ -2,7 +2,6 @@ import pageElements from "./pageElements.js";
 import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
 import ThemeChanger from "./changeTheme.js";
-import Popup from "./components/Popup.js";
 import Section from "./components/Section.js";
 import initialCards from "./cards.js";
 import PopupWithImage from "./components/PopupWithImage.js";
@@ -72,60 +71,46 @@ function renderCard(card, selector) {
   return newCard.createCard();
 }
 
-function insertCard(card, selector, isPrepend = false) {
-  if (isPrepend) {
-    pageElements.cardsContainer.prepend(renderCard(card, selector));
-  } else {
-    pageElements.cardsContainer.append(renderCard(card, selector));
-  }
+function insertCard(card) {
+  section.addItem(card);
 }
 
-function addPlace() {
+function addPlace(data) {
   const card = {
-    name: pageElements.popupAdd.querySelector(".popup__input_type_place").value,
-    link: pageElements.popupAdd.querySelector(".popup__input_type_place-image").value,
+    name: data.place,
+    link: data.image,
   };
-  insertCard(card, "#element", true);
+  console.log(data.place, data.image);
+  insertCard(card);
   Card.checkEmpty();
 }
 
 function handleEditButton() {
-  validatorEditForm.toggleButtonState();
-  validatorEditForm.hideInputErrors();
+  validatorEditForm.resetValidation();
   insertInfoFromPage();
   popupEdit.open();
 }
 
 function handleAddButton() {
-  validatorAddForm.toggleButtonState();
-  validatorAddForm.hideInputErrors();
+  validatorAddForm.resetValidation();
   popupAdd.open();
 }
 
-function handleAddForm() {
-  addPlace();
+function handleAddForm(inputValues) {
+  addPlace(inputValues);
   popupAdd.close();
-  validatorAddForm.toggleButtonState();
+  validatorAddForm.resetValidation();
 }
 
-function handleEditForm(event) {
-  event.preventDefault();
-  editProfile();
+function handleEditForm(inputValues) {
+  editProfile(inputValues);
   popupEdit.close();
 }
 
-function handleClosePopup(event) {
-  const currentPopup = event.target.closest(".popup");
-  const isClosable =
-    event.target.classList.contains("popup") ||
-    event.target.classList.contains("popup__close-button");
-  if (isClosable) this.close();
-}
-
-function editProfile() {
+function editProfile(data) {
   userInfo.setUserInfo({
-    name: pageElements.popupUsername.value,
-    profession: pageElements.popupProfession.value,
+    name: data.name,
+    profession: data.profession,
   });
 }
 

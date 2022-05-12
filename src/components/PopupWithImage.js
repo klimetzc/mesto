@@ -8,13 +8,8 @@ export default class PopupWithImage extends Popup {
   }
 
   open(currentImage, currentName) {
-    document.addEventListener("keydown", (event) => {
-      super._handleEscUp(event);
-    });
-    this._popup.classList.add("popup_opened");
+    super.open();
     this.fillPopupImage(currentImage, currentName);
-
-    // super.open(); keydown не работает
   }
 
   fillPopupImage(currentImage, currentName) {

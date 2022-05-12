@@ -16,11 +16,11 @@ export default class Popup {
     this._popup.classList.remove("popup_opened");
   }
 
-  _handleEscUp(event) {
+  _handleEscUp = (event) => {
     if (event.key === "Escape") {
       this.close();
     }
-  }
+  };
 
   _handleClosePopup = (event) => {
     const isClosable =
