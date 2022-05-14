@@ -11,11 +11,11 @@ export default class Section {
     });
   }
 
-  addItem(item, isPrepend = true) {
-    if (isPrepend) {
-      this._cardsContainer.prepend(this._renderer(item, "#element"));
+  addItem(item, isNew) {
+    if (isNew) {
+      this._cardsContainer.prepend(this._renderer(item, "#element", 0));
     } else {
-      this._cardsContainer.append(this._renderer(item, "#element"));
+      this._cardsContainer.append(this._renderer(item, "#element", item.likes.length, item._id));
     }
   }
 }

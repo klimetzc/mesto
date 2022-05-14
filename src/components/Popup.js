@@ -22,6 +22,10 @@ export default class Popup {
     }
   };
 
+  getPopupSubmitButton = () => {
+    return this._popup.querySelector(".popup__submit");
+  };
+
   _handleClosePopup = (event) => {
     const isClosable =
       event.target.classList.contains("popup") ||

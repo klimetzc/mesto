@@ -20,11 +20,13 @@
   <section class="profile">
     <div class="profile__user">
       <!-- <img src="../images/avatar.jpg" alt="Аватар пользователя (динамический)" class="profile__avatar"> -->
-      <img src="<%=require('../images/avatar.jpg')%>" alt="Аватар пользователя (динамический)" class="profile__avatar">
+      <img src="<%=require('../images/Spinner-2.gif')%>" alt="Аватар пользователя (динамический)"
+        class="profile__avatar">
+      <div class="profile__avatar-button"></div>
       <div class="profile__info">
         <div class="profile__names">
-          <h1 class="profile__username">Жак-Ив Кусто</h1>
-          <p class="profile__profession">Исследователь океана</p>
+          <h1 class="profile__username">Username</h1>
+          <p class="profile__profession">User profession</p>
         </div>
         <button class="profile__edit-button"></button>
       </div>
@@ -35,11 +37,16 @@
 
   <section class="elements">
     <p class="elements__text">Вы ещё не добавили новых мест.</p>
+    <div class="elements__loader"></div>
     <template id="element">
       <article class="element">
         <img class="element__image">
         <h2 class="element__title"></h2>
-        <button class="element__like"></button>
+        <div class="element__like-container">
+          <button class="element__like"></button>
+          <p class="element__like-label">0</p>
+        </div>
+
         <button class="element__delete"></button>
       </article>
     </template>
@@ -94,6 +101,32 @@
       <button type="button" class="popup__close-button"></button>
     </div>
   </div>
+
+  <div class="popup popup_delete">
+    <div class="popup__window">
+      <h2 class="popup__title">Вы уверены?</h2>
+      <form action="" class="popup__form">
+        <button type="submit" class="popup__submit">Подтвердить</button>
+      </form>
+      <button type="button" class="popup__close-button"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_avatar">
+    <div class="popup__window">
+      <form action="" class="form-avatar popup__form popup__form_avatar">
+        <fieldset class="popup__fieldset">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <input id="avatar-input" type="url" name="avatar" class="popup__input popup__input_type_avatar"
+            placeholder="Ссылка на изображение" required>
+          <span class="popup__error-message avatar-input-error"></span>
+          <button type="submit" class="popup__submit">Подтвердить</button>
+        </fieldset>
+      </form>
+      <button type="button" class="popup__close-button"></button>
+    </div>
+  </div>
+
   <!-- POPUPS END -->
   <!-- <script src="index.js" type="module"></script> -->
   <!-- <script src="src/changeTheme.js" type="module"></script> -->
