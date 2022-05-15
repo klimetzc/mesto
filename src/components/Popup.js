@@ -22,10 +22,6 @@ export default class Popup {
     }
   };
 
-  getPopupSubmitButton = () => {
-    return this._popup.querySelector(".popup__submit");
-  };
-
   _handleClosePopup = (event) => {
     const isClosable =
       event.target.classList.contains("popup") ||
@@ -36,6 +32,6 @@ export default class Popup {
   };
 
   setEventListeners() {
-    this._popup.addEventListener("click", this._handleClosePopup);
+    this._popup.addEventListener("mousedown", this._handleClosePopup);
   }
 }

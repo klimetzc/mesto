@@ -51,8 +51,7 @@ export default class Card {
       this._removeLike(this.cardID)
         .then((response) => {
           event.target.classList.remove("element__like_active");
-          this._count -= 1;
-          this._likesCount.textContent = this._count;
+          this._likesCount.textContent = response.likes.length;
           return response;
         })
         .catch((err) => {
@@ -62,8 +61,7 @@ export default class Card {
       this._addLike(this.cardID)
         .then((response) => {
           event.target.classList.add("element__like_active");
-          this._count += 1;
-          this._likesCount.textContent = this._count;
+          this._likesCount.textContent = response.likes.length;
           return response;
         })
         .catch((err) => {

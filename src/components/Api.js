@@ -5,22 +5,34 @@ export default class Api {
     this._token = this._headers.authorization;
   }
 
+  _checkResponse(response) {
+    if (response.ok) {
+      return response.json();
+    }
+
+    return Promise.reject(response.status);
+  }
+
   getCards = () => {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
       headers: {
         authorization: this._token,
       },
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-
-      return Promise.reject(response.status);
-    });
+    }).then(this._checkResponse);
   };
 
-  addCard = (place, image, submitButton) => {
+  getUserData = () => {
+    // GET получить данные пользователя
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "GET",
+      headers: {
+        authorization: this._token,
+      },
+    }).then(this._checkResponse);
+  };
+
+  addCard = (place, image) => {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: {
@@ -31,19 +43,10 @@ export default class Api {
         name: place,
         link: image,
       }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(`Ошибка: ${response.status}`);
-      })
-      .finally(() => {
-        submitButton.textContent = "Создать";
-      });
+    }).then(this._checkResponse);
   };
 
-  deleteCard = (cardId, submitButton) => {
+  deleteCard = (cardId) => {
     // https://mesto.nomoreparties.co/v1/cohort-41/cards/271dbbd520255b11e427177e
     // DELETE удалить карточку
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
@@ -52,38 +55,11 @@ export default class Api {
         authorization: this._token,
         "Content-Type": "application/json",
       },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-
-        return Promise.reject(`Ошибка: ${response.status}`);
-      })
-      .finally(() => {
-        submitButton.textContent = "Подтвердить";
-      });
+    }).then(this._checkResponse);
   };
 
-  getUserData = () => {
-    // GET получить данные пользователя
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "GET",
-      headers: {
-        authorization: this._token,
-      },
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-
-      return Promise.reject(`Ошибка: ${response.status}`);
-    });
-  };
-
-  updateUserInfo = (name, about, submitButton) => {
+  updateUserInfo = (name, about) => {
     // PATCH заменить данные пользователя
-    let initiText = submitButton.textContent;
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
@@ -94,20 +70,10 @@ export default class Api {
         name: name,
         about: about,
       }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-
-        return Promise.reject(`Ошибка: ${response.status}`);
-      })
-      .finally(() => {
-        submitButton.textContent = "Сохранить";
-      });
+    }).then(this._checkResponse);
   };
 
-  updateUserAvatar = (avatarURL, submitButton) => {
+  updateUserAvatar = (avatarURL) => {
     // PATCH заменить аватар
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
@@ -118,17 +84,7 @@ export default class Api {
       body: JSON.stringify({
         avatar: avatarURL,
       }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-
-        return Promise.reject(`Ошибка: ${response.status}`);
-      })
-      .finally(() => {
-        submitButton.textContent = "Подтвердить";
-      });
+    }).then(this._checkResponse);
   };
 
   addLike = (cardId) => {
@@ -139,13 +95,7 @@ export default class Api {
         authorization: this._token,
         "Content-Type": "application/json",
       },
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-
-      return Promise.reject(`Ошибка: ${response.status}`);
-    });
+    }).then(this._checkResponse);
   };
 
   removeLike = (cardId) => {
@@ -156,12 +106,6 @@ export default class Api {
         authorization: this._token,
         "Content-Type": "application/json",
       },
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-
-      return Promise.reject(`Ошибка: ${response.status}`);
-    });
+    }).then(this._checkResponse);
   };
 }

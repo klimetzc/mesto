@@ -15,6 +15,10 @@ export default class PopupWithConfirm extends Popup {
     });
   }
 
+  getPopupSubmitButton = () => {
+    return this._popup.querySelector(".popup__submit");
+  };
+
   open = (id, card) => {
     this.cardID = id;
     this.currentCard = card;

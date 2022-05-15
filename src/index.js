@@ -23,13 +23,29 @@ const api = new Api({
 });
 let section;
 let sessionUserID;
+let userInfo;
 
-api
-  .getCards()
-  .then((data) => {
+Promise.all([api.getCards(), api.getUserData()])
+  .then(([cards, userData]) => {
+    console.log(userData);
+    console.log(cards);
+    sessionUserID = userData._id;
+
+    userInfo = new UserInfo(
+      ".profile__username",
+      ".profile__profession",
+      ".profile__avatar",
+      userData._id
+    );
+    userInfo.setUserInfo({
+      name: userData.name,
+      profession: userData.about,
+      avatar: userData.avatar,
+    });
+
     section = new Section(
       {
-        items: data,
+        items: cards,
         renderer: renderCard,
       },
       ".elements"
@@ -37,8 +53,10 @@ api
     section.renderItems();
   })
   .catch((err) => {
+    console.log(err);
     pageElements.noCardsText.textContent = `Ошибка: ${err}`;
     pageElements.noCardsText.style.display = "block";
+    pageElements.profileAvatar.src = "https://via.placeholder.com/150";
   })
   .finally(() => {
     pageElements.elementsLoader.style.display = "none";
@@ -58,18 +76,7 @@ popupAvatar.setEventListeners();
 
 const popupDelete = new PopupWithConfirm(".popup_delete", handleDelete);
 popupDelete.setEventListeners();
-
-const userInfo = new UserInfo(".profile__username", ".profile__profession");
-
-api
-  .getUserData()
-  .then((data) => {
-    initUserInfo(data.name, data.about, data.avatar, data._id);
-  })
-  .catch((err) => {
-    console.log(err);
-    pageElements.profileAvatar.src = "https://via.placeholder.com/150";
-  });
+// HERE USER INFO
 
 const themeChanger = new ThemeChanger({
   page: pageElements.page,
@@ -139,7 +146,7 @@ function insertCard(card, isNew) {
 
 function addPlace(data) {
   api
-    .addCard(data.place, data.image, popupAdd.getPopupSubmitButton())
+    .addCard(data.place, data.image)
     .then((response) => {
       const card = {
         name: data.place,
@@ -147,12 +154,13 @@ function addPlace(data) {
       };
       insertCard(response, true);
       Card.checkEmpty();
+      popupAdd.close();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      popupAdd.close();
+      popupAdd.getPopupSubmitButton().textContent = "Создать";
     });
 }
 
@@ -192,50 +200,55 @@ function handleAvatarForm(inputValues) {
 function handleDelete(cardID, card) {
   popupDelete.getPopupSubmitButton().textContent = "Загрузка...";
   api
-    .deleteCard(cardID, popupDelete.getPopupSubmitButton())
+    .deleteCard(cardID)
     .then((response) => {
       card.remove();
+      popupDelete.close();
       return response;
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      popupDelete.close();
+      popupDelete.getPopupSubmitButton().textContent = "Подтвердить";
     }); // DONE
 }
 
 function editProfile(data) {
   api
-    .updateUserInfo(data.name, data.profession, popupEdit.getPopupSubmitButton())
+    .updateUserInfo(data.name, data.profession, data.avatar)
     .then((response) => {
       userInfo.setUserInfo({
         name: data.name,
         profession: data.profession,
+        avatar: data.avatar,
       });
+      popupEdit.close();
       return response;
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      popupEdit.close();
+      popupEdit.getPopupSubmitButton().textContent = "Сохранить";
     });
 }
 
 function updateAvatar(data) {
   api
-    .updateUserAvatar(data.avatar, popupAvatar.getPopupSubmitButton())
+    .updateUserAvatar(data.avatar)
     .then((response) => {
-      pageElements.profileAvatar.src = data.avatar;
+      userInfo.setUserInfo({
+        avatar: data.avatar,
+      });
+      popupAvatar.close();
       return response;
     })
     .catch((err) => {
       console.log(err);
-      console.log("avatar error");
     })
     .finally(() => {
-      popupAvatar.close();
+      popupAvatar.getPopupSubmitButton().textContent = "Подтвердить";
     });
 }
 
@@ -243,11 +256,4 @@ function insertInfoFromPage() {
   const data = userInfo.getUserInfo();
   pageElements.popupUsername.value = data.name;
   pageElements.popupProfession.value = data.profession;
-}
-
-function initUserInfo(name, about, avatar, userId) {
-  document.querySelector(".profile__username").textContent = name;
-  document.querySelector(".profile__profession").textContent = about;
-  document.querySelector(".profile__avatar").src = avatar;
-  sessionUserID = userId;
 }
