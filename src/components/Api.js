@@ -6,11 +6,11 @@ export default class Api {
   }
 
   _checkResponse(response) {
+    let json = response.json();
     if (response.ok) {
-      return response.json();
+      return json;
     }
-
-    return Promise.reject(response.status);
+    return json.then(Promise.reject.bind(Promise));
   }
 
   getCards = () => {

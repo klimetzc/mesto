@@ -53,8 +53,8 @@ Promise.all([api.getCards(), api.getUserData()])
     section.renderItems();
   })
   .catch((err) => {
-    console.log(err);
-    pageElements.noCardsText.textContent = `Ошибка: ${err}`;
+    console.log("Error", err.message);
+    pageElements.noCardsText.textContent = `Ошибка: ${err.message}`;
     pageElements.noCardsText.style.display = "block";
     pageElements.profileAvatar.src = "https://via.placeholder.com/150";
   })
